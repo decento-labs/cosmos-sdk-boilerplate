@@ -179,6 +179,10 @@ format:
 .PHONY: all build-linux install format lint \
 	go-mod-cache draw-deps clean build \
 
+###############################################################################
+###                                Protobuf                                 ###
+###############################################################################
+
 proto-all: proto-format proto-lint proto-gen
 
 proto-gen:
