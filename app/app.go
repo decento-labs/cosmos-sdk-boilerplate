@@ -140,9 +140,6 @@ type App struct {
 	NFTKeeper             nftkeeper.Keeper
 	ConsensusParamsKeeper consensuskeeper.Keeper
 
-	// TODO: add ibc keepers
-	// TODO: add wasm keeper
-
 	// simulation manager
 	sm *module.SimulationManager
 }
@@ -156,7 +153,7 @@ func init() {
 	DefaultNodeHome = filepath.Join(userHomeDir, AppUserHomeDir)
 }
 
-// NewApp returns a reference to an initialized SimApp.
+// NewApp returns a reference to an initialized App.
 func NewApp(
 	logger log.Logger,
 	db dbm.DB,
@@ -305,7 +302,7 @@ func NewApp(
 // Name returns the name of the App
 func (app *App) Name() string { return app.BaseApp.Name() }
 
-// LegacyAmino returns SimApp's amino codec.
+// LegacyAmino returns App's amino codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
@@ -313,7 +310,7 @@ func (app *App) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns SimApp's app codec.
+// AppCodec returns App's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
@@ -321,7 +318,7 @@ func (app *App) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns SimApp's InterfaceRegistry
+// InterfaceRegistry returns App's InterfaceRegistry
 func (app *App) InterfaceRegistry() codectypes.InterfaceRegistry {
 	return app.interfaceRegistry
 }
