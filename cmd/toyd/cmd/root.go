@@ -19,7 +19,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/debug"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
+	"github.com/cosmos/cosmos-sdk/client/pruning"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
+	"github.com/cosmos/cosmos-sdk/client/snapshot"
 	"github.com/cosmos/cosmos-sdk/server"
 	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
@@ -155,12 +157,11 @@ lru_size = 0`
 func initRootCmd(rootCmd *cobra.Command, encodingConfig EncodingConfig) {
 	rootCmd.AddCommand(
 		genutilcli.InitCmd(chain.ModuleBasics, chain.DefaultNodeHome),
-		testnetCmd(chain.ModuleBasics, banktypes.GenesisBalancesIterator{}), // TODO: reference simapp
+		NewTestnetCmd(chain.ModuleBasics, banktypes.GenesisBalancesIterator{}),
 		debug.Cmd(),
 		config.Cmd(),
-		// TODO: support this later referencing from simapp in Cosmos SDK
-		// pruning.PruningCmd(newApp),
-		// snapshot.Cmd(newApp),
+		pruning.PruningCmd(newApp),
+		snapshot.Cmd(newApp),
 	)
 
 	// add server commands
