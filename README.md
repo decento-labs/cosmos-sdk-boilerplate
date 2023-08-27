@@ -7,11 +7,12 @@
 
 ## Summary
 
-This repository is boilerplate that bootstraps an application chain using Cosmos SDK
+This repository serves as a boilerplate, designed to initialize an application chain utilizing the Cosmos SDK framework.
 
-## Dependency
+## Dependencies
 
-| Requirement | Notes    |
+| Requirement | Version  |
 |-------------|----------|
-| cosmos-sdk  | v0.45.10 |
-| ibc-go      | v3.4.0   |
+| cosmos-sdk  | v0.47.4  |
+| cometbft    | v0.37.1  |
+| ibc-go      | v7.1.0   |
